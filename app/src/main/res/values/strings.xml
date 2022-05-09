@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Gerenciador de Leituas</string>
+    <string name="book_register_page_title">Cadastro de Livros</string>
+    <string name="book_title_label">Título:</string>
+    <string name="book_isbn_code_label">ISBN: </string>
+    <string name="book_author_label">Autor:</string>
+    <string name="book_publisher_company_label">Editora:</string>
+    <string name="book_reading_status">Estado de leitura do livro:</string>
+    <string name="book_pages_amount">Quantidade de páginas:</string>
+    <string name="book_literary_genre">Gênero literário:</string>
+    <string name="book_reading_status_reading">Lendo</string>
+    <string name="book_reading_status_read">Lido</string>
+    <string name="book_reading_status_to_read">Para ler</string>
+    <string name="book_reading_status_stopped">Parei de ler</string>
+    <string name="book_checkbox_action">Ação</string>
+    <string name="book_checkbox_sitcom">Comédia</string>
+    <string name="checkbox_other">Outros</string>
+    <string name="book_checkbox_romance">Romance</string>
+    <string name="book_checkbox_thriller">Suspense</string>
+    <string name="submit_button">Enviar dados</string>
+    <string name="clear_all_data_button">Limpar dados</string>
+    <string name="book_tags_label">Etiqueta:</string>
+
+    <string-array name="tags">
+        <item>Sem etiqueta selecionada</item>
+        <item>Para rir</item>
+        <item>Para chorar</item>
+        <item>Para se apaixonar</item>
+        <item>Para se assustar</item>
+        <item>Para se distrair</item>
+        <item>Para se inspirar</item>
+        <item>Para estudar</item>
+        <item>Para melhorar habilidades comportamentais</item>
+        <item>Para melhorar habilidades técnicas</item>
+        <item>Para aprimorar inteligência emocional</item>
+        <item>Para melhorar comunicação oral</item>
+        <item>Para melhorar comunicação escrita</item>
+        <item>Para melhorar gerenciamento de finanças</item>
+        <item>Para melhorar gerenciamento de tempo</item>
+        <item>Para investir</item>
+    </string-array>
+</resources>
