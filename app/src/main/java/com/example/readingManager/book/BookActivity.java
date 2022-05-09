@@ -1,4 +1,4 @@
-package com.example.gerenciadorleituas.book;
+package com.example.readingManager.book;
 
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +10,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.gerenciadorleituas.R;
+import com.example.readingManager.R;
 
 import java.util.ArrayList;
 

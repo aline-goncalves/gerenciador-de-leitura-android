@@ -1,4 +1,4 @@
-package com.example.gerenciadorleituas;
+package com.example.readingManager;
 
 import org.junit.Test;
 

@@ -20,6 +20,7 @@
     <string name="submit_button">Enviar dados</string>
     <string name="clear_all_data_button">Limpar dados</string>
     <string name="book_tags_label">Etiqueta:</string>
+    <string name="book_list_page_title">Meus livros</string>
 
     <string-array name="tags">
         <item>Sem etiqueta selecionada</item>
