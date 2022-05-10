@@ -182,5 +182,4 @@ public class BookListActivity extends AppCompatActivity {
             }
         });
     }
-
 }
