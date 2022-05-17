@@ -1,4 +1,4 @@
-package com.example.gerenciadorleituas.book;
+package com.example.readingManager.book;
 
 import java.util.Date;
 import java.util.List;
