@@ -1,5 +1,6 @@
 package com.example.readingManager.book;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -8,6 +9,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.readingManager.R;
+import com.example.readingManager.appAuthorship.AppAuthorshipActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +46,16 @@ public class BookListActivity extends AppCompatActivity {
         }
 
         bookArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, titles);
+    }
+
+    public void callAboutAppAuthorshipActivity(View view){
+        Intent intent = new Intent(this, AppAuthorshipActivity.class);
+        startActivity(intent);
+    }
+
+    public void callBookRegisterActivity(View view){
+        Intent intent = new Intent(this, BookRegisterActivity.class);
+        startActivity(intent);
     }
 
     private void populateBooksList(){

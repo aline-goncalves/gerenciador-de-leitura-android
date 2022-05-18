@@ -1,5 +1,6 @@
 package com.example.readingManager.book;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,7 +15,7 @@ import com.example.readingManager.R;
 
 import java.util.ArrayList;
 
-public class BookActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class BookRegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private EditText editTextBookTitle;
     private EditText editTextIsbnCode;
     private EditText editTextTextBookAuthor;
@@ -41,7 +42,7 @@ public class BookActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_book);
+        setContentView(R.layout.activity_book_register);
         findComponents();
         populateSpinnerTags();
     }
@@ -153,6 +154,11 @@ public class BookActivity extends AppCompatActivity implements AdapterView.OnIte
         }else{
             sendToastToTheView("Preencha todos os campos!");
         }
+    }
+
+    public void callBookListActivity(View view){
+        Intent intent = new Intent(this, BookListActivity.class);
+        startActivity(intent);
     }
 
     private void clearBookFields(View view){
