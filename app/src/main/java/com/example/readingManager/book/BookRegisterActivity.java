@@ -12,7 +12,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.readingManager.R;
-
 import java.util.ArrayList;
 
 public class BookRegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {

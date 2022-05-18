@@ -10,7 +10,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.readingManager.R;
 import com.example.readingManager.appAuthorship.AppAuthorshipActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 
