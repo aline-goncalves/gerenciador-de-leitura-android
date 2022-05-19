@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class BookRegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private EditText editTextBookTitle;
     private EditText editTextIsbnCode;
-    private EditText editTextTextBookAuthor;
+    private EditText editTextBookAuthor;
     private EditText editTextTextPublisherCompany;
     private EditText editTextPagesAmount;
 
@@ -38,6 +38,8 @@ public class BookRegisterActivity extends AppCompatActivity implements AdapterVi
     private ArrayList<String> literaryGenres = new ArrayList<>();
     private boolean isTagSelected=false;
 
+    public static int FORM_FILLED = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +51,7 @@ public class BookRegisterActivity extends AppCompatActivity implements AdapterVi
     private void findComponents(){
         editTextBookTitle = findViewById(R.id.editTextBookTitle);
         editTextIsbnCode = findViewById(R.id.editTextIsbnCode);
-        editTextTextBookAuthor = findViewById(R.id.editTextTextBookAuthor);
+        editTextBookAuthor = findViewById(R.id.editTextTextBookAuthor);
         editTextTextPublisherCompany = findViewById(R.id.editTextTextPublisherCompany);
         editTextPagesAmount = findViewById(R.id.editTextPagesAmount);
 
@@ -144,13 +146,13 @@ public class BookRegisterActivity extends AppCompatActivity implements AdapterVi
         sendToastToTheView("Todos os campos foram limpos!");
      }
 
+    @SuppressWarnings("deprecation")
     public void submit(View view){
-        if(isValidData()) {
-            setDataBook();
-            getDataBook();
+         if(isValidData()) {
+            startActivityForResult(setDataBook(view), FORM_FILLED);
             clearBookFields(view);
             sendToastToTheView("Dados enviados com sucesso!");
-        }else{
+         }else{
             sendToastToTheView("Preencha todos os campos!");
         }
     }
@@ -163,7 +165,7 @@ public class BookRegisterActivity extends AppCompatActivity implements AdapterVi
     private void clearBookFields(View view){
         editTextBookTitle.setText(null);
         editTextIsbnCode.setText(null);
-        editTextTextBookAuthor.setText(null);
+        editTextBookAuthor.setText(null);
         editTextTextPublisherCompany.setText(null);
         editTextPagesAmount.setText(null);
 
@@ -188,7 +190,7 @@ public class BookRegisterActivity extends AppCompatActivity implements AdapterVi
     private boolean isValidData(){
         if(editTextBookTitle.getText() == null ||
                 editTextIsbnCode.getText() == null ||
-                editTextTextBookAuthor.getText() == null ||
+                editTextBookAuthor.getText() == null ||
                 editTextTextPublisherCompany.getText() == null ||
                 editTextPagesAmount.getText() == null) {
             return false;
@@ -216,13 +218,25 @@ public class BookRegisterActivity extends AppCompatActivity implements AdapterVi
         return true;
     }
 
-    private void setDataBook(){
+    private Intent setDataBook(View view){
+        Intent intent = new Intent(this, BookListActivity.class);
+
         book.setTitle(editTextBookTitle.getText().toString());
         book.setIsbnCode(editTextIsbnCode.getText().toString());
-        book.setAuthor(editTextTextBookAuthor.getText().toString());
+        book.setAuthor(editTextBookAuthor.getText().toString());
         book.setPublisherCompany(editTextTextPublisherCompany.getText().toString());
         book.setPagesAmount(Integer.parseInt(editTextPagesAmount.getText().toString()));
         book.setLiteraryGenres(literaryGenres);
+
+        intent.putExtra(BookListActivity.TITLE, editTextBookTitle.getText().toString());
+        intent.putExtra(BookListActivity.ISBN_CODE, editTextIsbnCode.getText().toString());
+        intent.putExtra(BookListActivity.AUTHOR, editTextBookAuthor.getText().toString());
+        intent.putExtra(BookListActivity.PUBLISHER_COMPANY, editTextTextPublisherCompany.getText().toString());
+        intent.putExtra(String.valueOf(BookListActivity.PAGES_AMOUNT), Integer.parseInt(editTextPagesAmount.getText().toString()));
+
+        FORM_FILLED = 1;
+
+        return intent;
     }
 
     private void getDataBook(){
