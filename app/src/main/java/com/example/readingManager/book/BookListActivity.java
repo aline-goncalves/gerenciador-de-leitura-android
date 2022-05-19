@@ -1,5 +1,7 @@
 package com.example.readingManager.book;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -8,7 +10,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.readingManager.R;
+import com.example.readingManager.appAuthorship.AppAuthorshipActivity;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class BookListActivity extends AppCompatActivity {
@@ -16,6 +20,16 @@ public class BookListActivity extends AppCompatActivity {
     private ArrayList<Book> books = new ArrayList<>();
     private ArrayList<String> titles = new ArrayList<>();
     private ArrayAdapter<String> bookArrayAdapter;
+
+    public static final String TITLE = "TITLE";
+    public static final String ISBN_CODE = "ISBN_CODE";
+    public static final String AUTHOR = "AUTHOR";
+    public static final String PUBLISHER_COMPANY = "PUBLISHER_COMPANY";
+    public static final int PAGES_AMOUNT = 0;
+    public static final String LITERARY_GENRES = "LITERARY_GENRES";
+    public static final String STATUS = "STATUS";
+    public static final String TAGS = "TAGS";
+
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -37,12 +51,45 @@ public class BookListActivity extends AppCompatActivity {
 
     private void populateAdapter(){
         populateBooksList();
+        populateBooksListWithDataFromView();
 
         for (Book book : books){
             titles.add(book.getTitle());
+            System.out.println(book.getTitle());
         }
 
         bookArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, titles);
+        BookRegisterActivity.FORM_FILLED = 0;
+        bookArrayAdapter.notifyDataSetChanged();
+    }
+
+    public void callAboutAppAuthorshipActivity(View view){
+        Intent intent = new Intent(this, AppAuthorshipActivity.class);
+        startActivity(intent);
+    }
+
+    public void callBookRegisterActivity(View view){
+        Intent intent = new Intent(this, BookRegisterActivity.class);
+        startActivity(intent);
+    }
+
+    private void populateBooksListWithDataFromView(){
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        Book book = new Book();
+
+        if(bundle != null){
+            book.setTitle(bundle.getString(TITLE, ""));
+            book.setIsbnCode(bundle.getString(ISBN_CODE, ""));
+            book.setAuthor(bundle.getString(AUTHOR, ""));
+            book.setLiteraryGenres(Collections.singletonList(bundle.getString(LITERARY_GENRES, "")));
+            book.setStatus(bundle.getString(STATUS, ""));
+            book.setPublisherCompany(bundle.getString(PUBLISHER_COMPANY, ""));
+            book.setPagesAmount(bundle.getInt(String.valueOf(PAGES_AMOUNT), 0));
+            book.setTag(bundle.getString(TAGS, ""));
+            books.add(book);
+            setResult(Activity.RESULT_OK, intent);
+        }
     }
 
     private void populateBooksList(){
@@ -181,5 +228,15 @@ public class BookListActivity extends AppCompatActivity {
                 sendToastMessage("Você selecionou o livro: " + listViewBooks.getItemAtPosition(position).toString());
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        cancel();
+    }
+
+    public void cancel(){
+        setResult(Activity.RESULT_CANCELED);
+        finish();
     }
 }

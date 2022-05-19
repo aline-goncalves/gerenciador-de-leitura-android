@@ -21,6 +21,23 @@
     <string name="clear_all_data_button">Limpar dados</string>
     <string name="book_tags_label">Etiqueta:</string>
     <string name="book_list_page_title">Meus livros</string>
+    <string name="app_authorship_page_title">Autoria do Aplicativo</string>
+    <string name="app_author_name_label">Nome da aluna:</string>
+    <string name="author_course_label">Curso:</string>
+    <string name="author_email_label">E-mail:</string>
+    <string name="app_author_name">Aline Toneti Gonçalves</string>
+    <string name="author_course">Curso de Especialização em Tecnologia Java</string>
+    <string name="author_email">toneti.aline@gmail.com</string>
+    <string name="app_description_label">Descrição do Aplicativo</string>
+    <string name="app_description">O Sistema de gerenciamento de leituras tem como objetivo principal auxiliar pessoas que leem muito.
+        Tanto por prazer, como para desenvolvimento pessoal e profissional, a organizarem suas leituras.
+        Ou seja, pessoas que leem vários livros ou compram muitos livros ao mesmo tempo e precisam organizar a ordem de leitura.
+        Também será um espaço para classificar os livros (dar uma nota) e guardar anotações sobre os livros lidos para referências futuras.
+</string>
+    <string name="utfpr_image_description">Logo da UTFPR - Campus Cornélio Procópio</string>
+    <string name="new_book_button">Novo</string>
+    <string name="about_app_authorship_button">Sobre</string>
+    <string name="get_back_button">Voltar</string>
 
     <string-array name="tags">
         <item>Sem etiqueta selecionada</item>
