@@ -3,11 +3,16 @@ package com.example.readingManager.book;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.readingManager.R;
 import com.example.readingManager.appAuthorship.AppAuthorshipActivity;
@@ -30,13 +35,61 @@ public class BookListActivity extends AppCompatActivity {
     public static final String STATUS = "STATUS";
     public static final String TAGS = "TAGS";
 
-
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
 
         findComponentsFromView();
         onItemSelected();
+        registerForContextMenu(listViewBooks);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        getMenuInflater().inflate(R.menu.context_menu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info;
+        info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+        switch(item.getItemId()){
+            case R.id.delete_menu_item:
+                delete(info.position);
+                return true;
+
+            case R.id.edit_menu_item:
+                edit(info.position);
+                return true;
+
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+    private void delete(int position){
+        titles.remove(position);
+        bookArrayAdapter.notifyDataSetChanged();
+    }
+
+    private void edit(int position){
+        String title = titles.get(position);
+        Book book = new Book();
+
+        for(Book b : books){
+            if(b.getTitle().equals(title)){
+                book = b;
+            }
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.opcoes, menu);
+        return true;
     }
 
     private void findComponentsFromView(){
@@ -55,20 +108,19 @@ public class BookListActivity extends AppCompatActivity {
 
         for (Book book : books){
             titles.add(book.getTitle());
-            System.out.println(book.getTitle());
         }
 
-        bookArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, titles);
+        bookArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, titles);
         BookRegisterActivity.FORM_FILLED = 0;
         bookArrayAdapter.notifyDataSetChanged();
     }
 
-    public void callAboutAppAuthorshipActivity(View view){
+    public void callAboutAppAuthorshipActivity(MenuItem menu){
         Intent intent = new Intent(this, AppAuthorshipActivity.class);
         startActivity(intent);
     }
 
-    public void callBookRegisterActivity(View view){
+    public void callBookRegisterActivity(MenuItem menu){
         Intent intent = new Intent(this, BookRegisterActivity.class);
         startActivity(intent);
     }
