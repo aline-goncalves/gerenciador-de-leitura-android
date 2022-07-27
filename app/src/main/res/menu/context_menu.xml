@@ -9,7 +9,7 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/delete_menu_item"
-        android:icon="@android:drawable/ic_notification_clear_all"
+        android:icon="@android:drawable/ic_menu_delete"
         android:title="@string/delete"
         app:showAsAction="ifRoom" />
 </menu>

@@ -1,7 +1,6 @@
 package com.example.readingManager.book;
 
 import java.util.Date;
-import java.util.List;
 
 public class Book {
     private String title;
@@ -14,7 +13,7 @@ public class Book {
     private int order;
     private String status;
     private String tag;
-    private List<String> literaryGenres;
+    private String[] literaryGenres;
 
     public String getTitle() {
         return title;
@@ -88,11 +87,11 @@ public class Book {
         this.status = status;
     }
 
-    public List<String> getLiteraryGenres() {
+    public String[] getLiteraryGenres() {
         return literaryGenres;
     }
 
-    public void setLiteraryGenres(List<String> literaryGenres) {
+    public void setLiteraryGenres(String[] literaryGenres) {
         this.literaryGenres = literaryGenres;
     }
 
