@@ -38,6 +38,11 @@
     <string name="new_book_button">Novo</string>
     <string name="about_app_authorship_button">Sobre</string>
     <string name="get_back_button">Voltar</string>
+    <string name="add_menu_item">Adicionar</string>
+    <string name="about_menu_item">Sobre</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Excluir</string>
+    <string name="clear_fields">Limpar</string>
 
     <string-array name="tags">
         <item>Sem etiqueta selecionada</item>
@@ -57,4 +62,8 @@
         <item>Para melhorar gerenciamento de tempo</item>
         <item>Para investir</item>
     </string-array>
+
+    <string name="new_book">Novo Livro</string>
+    <string name="edited_book">Editar Livro</string>
+    <string name="cancel_edition">Cancelar</string>
 </resources>
